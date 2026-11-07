@@ -5,8 +5,7 @@ import { api } from '../api'
 // Instructor Portal login. This portal is separate from the student JWT auth
 // (AuthContext) — it has its own simple session stored in localStorage.
 //
-// The form sends plain strings (honest use). The backing endpoint is
-// intentionally vulnerable to NoSQL injection; see Flow.md for the lab.
+// The form sends plain strings; the backing endpoint validates them.
 export default function InstructorLogin() {
   const nav = useNavigate()
   const [username, setUsername] = useState('')

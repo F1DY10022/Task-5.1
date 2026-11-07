@@ -4,8 +4,7 @@ import { api } from '../api'
 
 // Instructor Portal dashboard. Reads the naive session from localStorage.
 // Shows the signed-in profile, the public directory, and a name search.
-// The search box sends a plain string; students intercept the request
-// (Postman / proxy) to inject MongoDB operators — see Flow.md.
+// The search box sends a plain string; the server ignores anything else.
 export default function InstructorDashboard() {
   const nav = useNavigate()
   const [instructor, setInstructor] = useState(null)
@@ -58,9 +57,6 @@ export default function InstructorDashboard() {
           <div className="text-sm text-zinc-600">
             @{instructor.username} • {instructor.department} • role: <b>{instructor.role}</b>
           </div>
-          {instructor.apiKey && (
-            <div className="text-sm mt-1">API key: <code>{instructor.apiKey}</code></div>
-          )}
         </div>
         <button onClick={logout} className="btn">Log out</button>
       </div>
